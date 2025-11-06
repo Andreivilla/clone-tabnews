@@ -1,12 +1,7 @@
 services:
   database:
     image: 'postgres:16.10-alpine3.22'
-    environment:
-      - ../.env
-      #POSTGRES_PASSWORD: 'admin'
-      #coloquei admin pq por algum motivo o windows não
-      #reconhece esse comando quando monta o docker mas
-      #o linux sim então vou usar esse padrão para simplicar
-      #utilizar nos meus dois sistemas de trabalho
+    env_file:
+      - ../.env.development
     ports:
       - '5432:5432'

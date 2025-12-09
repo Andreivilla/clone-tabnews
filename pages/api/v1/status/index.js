@@ -5,8 +5,6 @@ async function status(request, response) {
   const databaseVersion = await database.query('SHOW server_version;');
   const postgresMaxConnections = await database.query('SHOW max_connections;');
 
-  let var_esquecida;
-
   const databaseName = process.env.POSTGRES_DB;
   const postgresOpenedConnections = await database.query({
     text: 'SELECT count (*)::int FROM pg_stat_activity WHERE datname = $1;',
